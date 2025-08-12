@@ -76,6 +76,8 @@ Este patrón garantiza que solo exista una instancia del historial durante toda 
 
 - *Nombre:* Sulay Sandobal Ricardo  
 - *Fecha:* Agosto de 2025  
-- *Materia:* Ingeniería de Software II  
+- *Materia:* Ingeniería de Software II
+- Versión: 2.0
+  
 
 ¡Gracias por revisar este proyecto actualizado!
