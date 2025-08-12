@@ -29,7 +29,7 @@ Evaluar la interfaz de usuario actual del sistema **Gestión de Repuestos Motos*
 ---
 
 ## Evidencias del Rediseño
-📄 **Diseño Digital Figma:** [docs/rediseño_figma.png](docs/rediseño_figma.png)  
+📄 **Diseño Digital Figma:** [docs/rediseño_figma.png](rediseño_figma.png)  
 🔗 **Prototipo interactivo:** [Ver en Figma](https://www.figma.com/proto/1boyje7hyFT6wN22L8pQaW/Untitled?node-id=9-3&t=oODYsNNa8PPDqLkL-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1)  
 
 ---
