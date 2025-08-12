@@ -14,7 +14,7 @@ Evaluar la interfaz de usuario actual del sistema **Gestión de Repuestos Motos*
 | **Consistencia visual**| Sí                    | Colores, tipografía y estructura coherentes en toda la interfaz. |
 | **Estética**           | Parcial               | Diseño limpio, pero algunos colores podrían suavizarse para mayor armonía. |
 
-📄 **Archivo detallado:** [docs/tabla_evaluacion.png](docs/tabla_evaluacion.png)
+📄 **Archivo detallado:** [docs/tabla_evaluacion.png](tabla_evaluacion.png)
 
 ---
 
