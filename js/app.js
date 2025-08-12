@@ -28,7 +28,12 @@ form.addEventListener('submit', (e) => {
     );
 
     if (productoDuplicado) {
-        alert("Ya existe un repuesto con el mismo nombre, categoría y precio.");
+        Swal.fire({
+            icon: 'warning',
+            title: 'Duplicado',
+            text: 'Ya existe un repuesto con el mismo nombre, categoría y precio.',
+            confirmButtonColor: '#5d40de'
+        });
         return;
     }
 
@@ -48,6 +53,13 @@ form.addEventListener('submit', (e) => {
     const historial = HistorialRepuestos.obtenerInstancia();
     historial.agregarEvento(`Repuesto "${product.name}" guardado o editado.`);
     mostrarHistorial();
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Guardado',
+        text: `El repuesto "${product.name}" se guardó correctamente.`,
+        confirmButtonColor: '#5d40de'
+    });
 });
 
 // Cargar datos en formulario para edición
@@ -74,8 +86,12 @@ function renderTable() {
             <td>${product.category}</td>
             <td>$${product.price}</td>
             <td class="actions">
-                <button class="edit-btn" onclick="editProduct('${product.id}')">Editar</button>
-                <button class="delete-btn" onclick="handleDelete('${product.id}')">Eliminar</button>
+                <button class="edit-btn" title="Editar" onclick="editProduct('${product.id}')">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="delete-btn" title="Eliminar" onclick="handleDelete('${product.id}')">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
             </td>
         `;
 
@@ -92,17 +108,35 @@ function actualizarContador() {
     contador.textContent = `Total de repuestos: ${productos.length}`;
 }
 
-// Confirmar y eliminar repuesto
+// Confirmar y eliminar repuesto con alerta moderna
 function handleDelete(id) {
-    if (confirm('¿Estás seguro de que deseas eliminar este repuesto?')) {
-        const producto = findProductById(id);
-        deleteProduct(id);
-        renderTable();
+    Swal.fire({
+        title: '¿Eliminar repuesto?',
+        text: 'Esta acción no se puede deshacer.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const producto = findProductById(id);
+            deleteProduct(id);
+            renderTable();
 
-        const historial = HistorialRepuestos.obtenerInstancia();
-        historial.agregarEvento(`Repuesto "${producto.name}" eliminado.`);
-        mostrarHistorial();
-    }
+            const historial = HistorialRepuestos.obtenerInstancia();
+            historial.agregarEvento(`Repuesto "${producto.name}" eliminado.`);
+            mostrarHistorial();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Eliminado',
+                text: `El repuesto "${producto.name}" ha sido eliminado.`,
+                confirmButtonColor: '#5d40de'
+            });
+        }
+    });
 }
 
 // Limpiar datos inválidos
@@ -139,3 +173,5 @@ function mostrarHistorial() {
 limpiarRepuestosInvalidos();
 renderTable();
 mostrarHistorial();
+
+

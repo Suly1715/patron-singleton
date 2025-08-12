@@ -1,132 +1,211 @@
+/* ===== Fuente profesional ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
     margin: 0;
-    padding: 20px;
-    background-color: #f0f2f5;
+    padding: 0;
+    background-color: #f5f4fa;
 }
 
+/* ====== ENCABEZADO ====== */
 header {
     text-align: center;
     background-color: #5d40de;
     color: #fff;
     padding: 15px 0;
     margin-bottom: 20px;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-h1, h2 {
-    margin: 0 0 15px;
+header i {
+    margin-right: 8px;
 }
 
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* ====== SECCIONES ====== */
 section {
     background-color: #fff;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* ====== FORMULARIO ====== */
+.form-section {
+    flex: 1 1 300px;
+}
+
+.form-section h2 {
+    color: #5d40de;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 form label {
     display: block;
-    margin: 10px 0 5px;
+    margin: 12px 0 5px;
+    font-weight: 500;
+    color: #444;
 }
 
-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
+form label i {
+    margin-right: 6px;
+    color: #5d40de;
 }
 
+form input,
 form select {
     width: 100%;
-    padding: 8px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #5d40de;
+    box-shadow: 0 0 6px rgba(93, 64, 222, 0.4);
+}
 
-form button {
-    background-color: #10be03;
-    color: rgb(255, 255, 255);
+/* Botón principal */
+.btn-submit {
+    background-color: #5d40de;
+    color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 3px 6px rgba(93, 64, 222, 0.3);
 }
 
-form button:hover {
-    background-color: #45a049;
+.btn-submit:hover {
+    background-color: #4c32c6;
+}
+
+.btn-submit:active {
+    transform: scale(0.96);
+}
+
+/* ====== TABLA ====== */
+.table-section {
+    flex: 2 1 500px;
+}
+
+.table-section h2 {
+    color: #5d40de;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#product-count {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 table thead {
-    background-color: #4677e9;
-    color: rgb(255, 255, 255);
-}
-
-table th, table td {
-    padding: 10px;
-    border: 1px solid #969595;
-    text-align: left;
-}
-
-.actions button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.actions .edit-btn {
-    background-color: #f3d912;
-    color: #333;
-}
-
-.actions .delete-btn {
-    background-color: #ec301b;
+    background-color: #5d40de;
     color: white;
 }
 
-.titulo-repuestos {
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+tr {
+    transition: background-color 0.2s ease;
+}
+
+tr:hover {
+    background-color: rgba(93, 64, 222, 0.05);
+}
+
+/* ====== BOTONES DE ACCIONES ====== */
+.actions {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.actions button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 1.2rem;
+    transition: transform 0.1s ease;
+}
+
+.actions button:hover {
+    transform: scale(1.15);
+}
+
+.actions .edit-btn {
+    color: #f3d912;
+}
+
+.actions .delete-btn {
+    color: #ec301b;
+}
+
+.actions .edit-btn:hover {
+    color: #cbbd0e;
+}
+
+.actions .delete-btn:hover {
+    color: #b52215;
+}
+
+/* ====== HISTORIAL ====== */
+.historial-section {
+    margin: 20px;
+}
+
+.historial-section h2 {
+    color: #5d40de;
     display: flex;
     align-items: center;
-    gap: 10px; /* espacio entre imagen y texto */
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.icon-moto {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;  
-  appearance: textfield;       
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;    
-  appearance: none;           
-  margin: 0;
-}
-
-.historial-section {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    gap: 8px;
 }
 
 .historial-section ul {
@@ -138,6 +217,19 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-bottom: 6px;
     color: #555;
 }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
 
 
 

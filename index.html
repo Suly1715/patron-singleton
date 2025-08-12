@@ -5,74 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Repuestos Motos</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Gestión de Repuestos Motos</h1>
+        <h1><i class="fa-solid fa-motorcycle"></i> Gestión de Repuestos Motos</h1>
     </header>
 
-    <section class="form-section">
-        <h2>Registro de Repuestos</h2>
-        <form id="product-form">
-            <input type="hidden" id="product-id">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" required>
+    <main class="container">
+        <!-- Formulario -->
+        <section class="form-section">
+            <h2><i class="fa-solid fa-plus"></i> Registro de Repuestos</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
 
-            <label for="category">Categoría:</label>
-            <select id="category" required>
-                <option value="">Seleccione una categoría</option>
-                <option value="Motor">Motor</option>
-                <option value="Transmisión">Transmisión</option>
-                <option value="Frenos">Frenos</option>
-                <option value="Suspensión">Suspensión</option>
-                <option value="Neumáticos">Neumáticos</option>
-                <option value="Eléctrico">Eléctrico</option>
-                <option value="Iluminación">Iluminación</option>
-                <option value="Control y mandos">Control y mandos</option>
-                <option value="Accesorios">Accesorios</option>
-                <option value="Escape">Escape</option>
-                <option value="Carrocería">Carrocería</option>
-                <option value="Sistema de combustible">Sistema de combustible</option>
-                <option value="Refrigeración">Refrigeración</option>
-                <option value="Rodamientos y sellos">Rodamientos y sellos</option>
-                <option value="Herramientas y mantenimiento">Herramientas y mantenimiento</option>
-            </select>
+                <label for="name"><i class="fa-solid fa-screwdriver-wrench"></i> Nombre:</label>
 
-            <label for="price">Precio:</label>
-            <input type="number" id="price" required min="0" step="0.01">
+                <input type="text" id="name" required>
 
-            <button type="submit">Guardar</button>
-        </form>
-    </section>
+                <label for="category"><i class="fa-solid fa-clipboard-list"></i> Categoría:</label>
+                <select id="category" required>
+                    <option value="">Seleccione una categoría</option>
+                    <option value="Motor">Motor</option>
+                    <option value="Transmisión">Transmisión</option>
+                    <option value="Frenos">Frenos</option>
+                    <option value="Suspensión">Suspensión</option>
+                    <option value="Neumáticos">Neumáticos</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Iluminación">Iluminación</option>
+                    <option value="Control y mandos">Control y mandos</option>
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Escape">Escape</option>
+                    <option value="Carrocería">Carrocería</option>
+                    <option value="Sistema de combustible">Sistema de combustible</option>
+                    <option value="Refrigeración">Refrigeración</option>
+                    <option value="Rodamientos y sellos">Rodamientos y sellos</option>
+                    <option value="Herramientas y mantenimiento">Herramientas y mantenimiento</option>
+                </select>
 
-    <section class="table-section">
-        <h2 class="titulo-repuestos">
-            <img src="assets/iconMoto.png" alt="iconMoto" class="icon-moto">
-            Lista de Repuestos
-        </h2>
+                <label for="price"><i class="fa-solid fa-dollar-sign"></i> Precio:</label>
+                <input type="number" id="price" required min="0" step="0.01">
 
-        <p id="product-count">Total de repuestos: 0</p>
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-save"></i> Guardar</button>
+            </form>
+        </section>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Categoría</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody id="product-table-body">
-            </tbody>
-        </table>
-    </section>
+        <!-- Lista de repuestos -->
+        <section class="table-section">
+            <h2 class="titulo-repuestos">
+                <i class="fa-solid fa-boxes-stacked"></i> Lista de Repuestos
+            </h2>
 
+            <p id="product-count">Total de repuestos: 0</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    <!-- Aquí el JS insertará las filas con íconos de editar y eliminar -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Registro de actividades -->
     <section class="historial-section">
-        <h2>Registro de Actividades</h2>
+        <h2><i class="fa-solid fa-check"></i> Registro de Actividades</h2>
         <ul id="historial-lista"></ul>
     </section>
 
     <script src="js/storage.js"></script>
-    <script src="singleton_ssandobal/HistorialRepuestos.js"></script>
-    <script src="js/app.js"></script>
+<script src="singleton_ssandobal/HistorialRepuestos.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="js/app.js"></script>
+
 </body>
 </html>
+
