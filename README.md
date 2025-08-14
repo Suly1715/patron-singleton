@@ -1,12 +1,12 @@
 # 🏍 Gestión de Repuestos para Motos
 
-Este proyecto es una aplicación web simple desarrollada en **HTML**, **CSS** y **JavaScript** que permite gestionar un inventario de repuestos para motos.
+Este proyecto es una aplicación web simple desarrollada en **HTML**, **CSS**, **JavaScript** y **PHP** que permite gestionar un inventario de repuestos para motos, ahora con persistencia de datos en **MySQL**.
 
 ---
 
 ## 🎯 Objetivo
 
-Facilitar el registro, gestión y visualización de repuestos de motos mediante una interfaz intuitiva que permite llevar un control básico de nombre, categoría y precio de cada producto.
+Facilitar el registro, gestión y visualización de repuestos de motos mediante una interfaz intuitiva que permite llevar un control básico de nombre, categoría y precio de cada producto, almacenando los datos en una base de datos para mayor seguridad y persistencia.
 
 ---
 
@@ -14,8 +14,10 @@ Facilitar el registro, gestión y visualización de repuestos de motos mediante 
 
 - **HTML5** – Estructura de la interfaz  
 - **CSS3** – Estilos personalizados  
-- **JavaScript** – Lógica de funcionamiento e interacción  
-- **localStorage** – Almacenamiento de datos en el navegador  
+- **JavaScript** – Lógica de funcionamiento e interacción en el frontend  
+- **PHP** – Lógica de backend para conexión con base de datos  
+- **MySQL** – Almacenamiento persistente de los datos  
+- **Fetch API** – Comunicación asíncrona entre frontend y backend
 
 ---
 
@@ -23,7 +25,8 @@ Facilitar el registro, gestión y visualización de repuestos de motos mediante 
 
 - Arquitectura **MVC** (Modelo – Vista – Controlador) para una estructura limpia y mantenible.  
 - Desarrollo incremental con funcionalidades **CRUD**: crear, visualizar, editar y eliminar repuestos.  
-- Preparado para la **escalabilidad**, con posibilidad de integrar módulos futuros como autenticación, alertas, informes y conexión a base de datos.  
+- Migración de **localStorage** a **MySQL** para almacenamiento permanente y seguro.  
+- Preparado para la **escalabilidad**, con posibilidad de integrar módulos futuros como autenticación, alertas e informes.  
 - Uso de **Git** como herramienta de control de versiones para facilitar la colaboración y el seguimiento del desarrollo.  
 
 ---
@@ -39,7 +42,7 @@ Facilitar el registro, gestión y visualización de repuestos de motos mediante 
 - Contador dinámico de repuestos totales  
 - Posibilidad de editar y eliminar repuestos existentes  
 - Icono representativo junto al título principal  
-- Persistencia de datos utilizando **localStorage** del navegador  
+- Persistencia de datos utilizando **MySQL** en el servidor  
 
 ---
 
@@ -59,6 +62,20 @@ Este patrón garantiza que solo exista una instancia del historial durante toda 
 
 ---
 
+## 🗄 Implementación de Base de Datos
+
+La aplicación ahora se conecta a **MySQL** mediante **PHP** (`backend.php`), permitiendo un almacenamiento persistente y accesible desde cualquier dispositivo.  
+La base de datos incluye una tabla `repuestos` con las siguientes columnas:
+
+| Campo        | Tipo          | Descripción |
+|--------------|--------------|-------------|
+| id           | INT (PK, AI) | Identificador único |
+| nombre       | VARCHAR(100) | Nombre del repuesto |
+| categoria    | VARCHAR(50)  | Categoría del repuesto |
+| precio       | DECIMAL(10,2)| Precio del repuesto |
+
+---
+
 ## 🎨 Evaluación y Rediseño de la Interfaz
 
 Con el objetivo de mejorar la claridad, interactividad y usabilidad del sistema, se realizó una evaluación de la interfaz actual y se implementaron mejoras basadas en principios de **diseño centrado en el usuario**.
@@ -74,8 +91,6 @@ Con el objetivo de mejorar la claridad, interactividad y usabilidad del sistema,
 | **Consistencia visual**| Sí                    | Colores, tipografía y estructura coherentes en toda la interfaz. |
 | **Estética**           | Parcial               | Diseño limpio, pero algunos colores podrían suavizarse para mayor armonía. |
 
-
-
 ---
 
 ## 🚀 Mejoras Implementadas
@@ -86,33 +101,33 @@ Con el objetivo de mejorar la claridad, interactividad y usabilidad del sistema,
 ✅ Agrupación visual de los módulos de Registro, Lista y Registro de Actividades.  
 ✅ Botones de acción con iconos de edición y eliminación más intuitivos.  
 ✅ Implementación de diseño responsivo para adaptarse a distintos tamaños de pantalla.  
-
+✅ Migración a **MySQL** para almacenamiento persistente.  
 
 ---
 
 ## 📌 Conclusiones del Rediseño
 
 El rediseño mejora significativamente la experiencia de usuario, incorporando iconografía clara, colores armónicos y separación visual de secciones para facilitar la comprensión y uso del sistema.  
-Además, se integró un diseño totalmente responsivo, lo que permite que la interfaz se adapte a dispositivos móviles y pantallas de diferentes tamaños.  
+Además, se integró un diseño totalmente responsivo y una conexión con base de datos MySQL, lo que permite que los datos sean persistentes y accesibles en cualquier momento.  
 La retroalimentación visual se mejoró parcialmente, pero se recomienda seguir optimizándola con animaciones y efectos modernos para acciones clave.  
 
 ---
 
 ## 🔧 Cómo usar el proyecto
 
-1. Abre el archivo `index.html` en cualquier navegador.  
-2. Rellena los campos del formulario para agregar un nuevo repuesto.  
-3. El repuesto aparecerá automáticamente en la tabla inferior.  
-4. Las acciones realizadas se mostrarán en el historial de actividades.  
-5. Los datos se guardan en el navegador y se mantienen entre sesiones.  
+1. Clonar el repositorio en tu servidor local o hosting.  
+2. Importar el archivo `sql/database.sql` en tu servidor MySQL para crear la base de datos y la tabla `repuestos`.  
+3. Configurar las credenciales de conexión en `backend.php`.  
+4. Abrir el archivo `index.html` en el navegador por ejemplo: http://localhost/NombreCarpeta/index.html.  
+5. Registrar, editar o eliminar repuestos desde la interfaz; los cambios se reflejarán en la base de datos.  
 
 ---
 
 ## 📌 Notas adicionales
 
-- No es necesario instalar software adicional.  
-- Los datos se almacenan únicamente en el navegador local (sin conexión a servidor).  
-- Ideal para demostraciones, prácticas o tareas educativas.  
+- Requiere un servidor local como **XAMPP**, **Laragon** o similar para funcionar correctamente.  
+- Los datos ahora se almacenan en **MySQL**, por lo que no se perderán al cerrar el navegador.  
+- Ideal para demostraciones, prácticas o tareas educativas con persistencia de datos.  
 
 ---
 
@@ -124,5 +139,5 @@ La retroalimentación visual se mejoró parcialmente, pero se recomienda seguir 
 
 ---
 
-¡Gracias por revisar este proyecto actualizado!
+¡Gracias por revisar este proyecto actualizado con base de datos MySQL!
 
