@@ -18,7 +18,7 @@ form.addEventListener('submit', async (e) => {
         id: idInput.value,
         name: nameInput.value.trim(),
         category: categoryInput.value.trim(),
-        price: parseFloat(priceInput.value).toFixed(2)
+        price: parseFloat(priceInput.value)
     };
 
     if (!product.name || !product.category || isNaN(product.price)) return;

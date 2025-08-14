@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost/GestionRepuestosMots/index.html';
+const API_URL = 'http://localhost/GestionRepuestosMots/backend.php';
+
 
 // Obtener todos los repuestos desde MySQL
 async function getProducts() {
