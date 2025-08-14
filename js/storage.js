@@ -1,37 +1,44 @@
-// Obtener repuestos desde localStorage
-function getProducts() {
-    return JSON.parse(localStorage.getItem('products')) || [];
+const API_URL = 'http://localhost/GestionRepuestosMots/index.html';
+
+// Obtener todos los repuestos desde MySQL
+async function getProducts() {
+    const res = await fetch(API_URL);
+    return await res.json();
 }
 
-// Guardar repuestos en localStorage
-function saveProducts(products) {
-    localStorage.setItem('products', JSON.stringify(products));
+// Guardar o actualizar un repuesto
+async function saveProduct(product) {
+    let method = product.id ? 'PUT' : 'POST';
+
+    const res = await fetch(API_URL, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: product.id,
+            nombre: product.name,
+            categoria: product.category,
+            precio: parseFloat(product.price)
+        })
+    });
+
+    return await res.json();
 }
 
-// Guardar o actualizar un solo repuesto
-function saveProduct(product) {
-    let products = getProducts();
-    const existingIndex = products.findIndex(p => p.id === product.id);
-
-    if (existingIndex !== -1) {
-        products[existingIndex] = product;
-    } else {
-        products.push(product);
-    }
-
-    saveProducts(products);
-}
-
-// Eliminar un repuesto por ID
-function deleteProduct(id) {
-    let products = getProducts();
-    products = products.filter(product => product.id !== id);
-    saveProducts(products);
+// Eliminar un repuesto
+async function deleteProduct(id) {
+    const res = await fetch(API_URL, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+    });
+    return await res.json();
 }
 
 // Buscar un repuesto por ID
-function findProductById(id) {
-    const products = getProducts();
-    return products.find(p => p.id === id);
+async function findProductById(id) {
+    const products = await getProducts();
+    return products.find(p => p.id == id);
 }
+
+
 
