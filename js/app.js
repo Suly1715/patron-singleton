@@ -16,30 +16,42 @@ form.addEventListener('submit', async (e) => {
 
     const product = {
         id: idInput.value,
-        name: nameInput.value.trim(),
-        category: categoryInput.value.trim(),
-        price: parseFloat(priceInput.value)
+        nombre: nameInput.value.trim(),
+        categoria: categoryInput.value.trim(),
+        precio: parseFloat(priceInput.value)
     };
 
-    if (!product.name || !product.category || isNaN(product.price)) return;
+    // ✅ Validación con las claves correctas
+    if (!product.nombre || !product.categoria || isNaN(product.precio)) {
+        Swal.fire({ icon: 'warning', title: 'Campos incompletos', text: 'Revisa nombre, categoría y precio.' });
+        return;
+    }
 
-    await saveProduct(product);
-    form.reset();
-    idInput.value = '';
+    try {
+        await saveProduct(product);
+        const nombreMostrado = product.nombre; // guardo antes de resetear
 
-    const historial = HistorialRepuestos.obtenerInstancia();
-    historial.agregarEvento(`Repuesto "${product.name}" guardado o editado.`);
-    mostrarHistorial();
+        form.reset();
+        idInput.value = '';
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Guardado',
-        text: `El repuesto "${product.name}" se guardó correctamente.`,
-        confirmButtonColor: '#5d40de'
-    });
+        const historial = HistorialRepuestos.obtenerInstancia();
+        historial.agregarEvento(`Repuesto "${nombreMostrado}" guardado o editado.`);
+        mostrarHistorial();
 
-    renderTable();
+        Swal.fire({
+            icon: 'success',
+            title: 'Guardado',
+            text: `El repuesto "${nombreMostrado}" se guardó correctamente.`,
+            confirmButtonColor: '#5d40de'
+        });
+
+        renderTable();
+    } catch (err) {
+        console.error(err);
+        Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo guardar el repuesto.' });
+    }
 });
+
 
 async function editProduct(id) {
     const product = await findProductById(id);
