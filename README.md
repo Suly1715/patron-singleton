@@ -117,7 +117,7 @@ La retroalimentación visual se mejoró parcialmente, pero se recomienda seguir 
 
 1. Clonar el repositorio en tu servidor local o hosting.  
 2. Importar el archivo `sql/database.sql` en tu servidor MySQL para crear la base de datos y la tabla `repuestos`.  
-3. Configurar las credenciales de conexión en `backend.php`.  
+3. Configurar las credenciales de conexión en `backend.php`, como ($host, $user, $pass, $db).  
 4. Abrir el archivo `index.html` en el navegador por ejemplo: http://localhost/NombreCarpeta/index.html.  
 5. Registrar, editar o eliminar repuestos desde la interfaz; los cambios se reflejarán en la base de datos.  
 
